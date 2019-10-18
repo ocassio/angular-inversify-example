@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MessagerServiceType, MessagerService } from 'src/core/services/messager/messager.service.api';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'inversify-demo';
+
+  title: string;
+
+  constructor(
+    messagerService: MessagerService
+  ) {
+    this.title = messagerService.getMessage();
+  }
 }
